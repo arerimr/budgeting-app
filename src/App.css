@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+.NavBar{
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  background-color: pink;
+  align-items: center;
+}
+
+.NavBar button{
+  margin-left: 50%;
+  background-color: pink;
+  height: 50px;
+  font-weight: bold;
+}
+
+

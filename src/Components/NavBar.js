@@ -2,6 +2,9 @@
 
 export default function NavBar() {
     return (
-        <div>NavBar</div>
+        <div className="NavBar">
+            <h1>Budget App by M R</h1>
+            <button>NEW TRANSACTION</button>
+        </div>
     )
 }
