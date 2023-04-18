@@ -52,4 +52,9 @@
   font-weight: bold;
 }
 
+.NavBar a{
+  text-decoration: none;
+  color: black;
+}
+
 
