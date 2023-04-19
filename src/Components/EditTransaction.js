@@ -29,25 +29,25 @@ export default function EditTransaction() {
             .catch((e) => console.error(e))
     }, [index]);
 
-    // const updateTransaction = () => {
-    //     axios
-    //         .put(`${API}/transactions/${index}`, transaction)
-    //         .then((res) => {
-    //             setTransaction(res.data)
-    //             console.log(res.data)
-    //             navigate(`/transactions/${index}`)
-    //         })
-    //         .catch((e) => console.error(e))
-    // }
-
     const updateTransaction = () => {
-        const options = {
-            method: "PUT",
-            body: JSON.stringify(transaction),
-            headers: { "Content-Type": "application/json" }
-        }
-        return fetch(`${API}/transactions/${index}`, options).then((res) => res.json());
+        axios
+            .put(`${API}/transactions/${index}`, transaction)
+            .then((res) => {
+                setTransaction(res.data)
+                console.log(res.data)
+                navigate(`/transactions/${index}`)
+            })
+            .catch((e) => console.error(e))
     }
+
+    // const updateTransaction = () => {
+    //     const options = {
+    //         method: "PUT",
+    //         body: JSON.stringify(transaction),
+    //         headers: { "Content-Type": "application/json" }
+    //     }
+    //     return fetch(`${API}/transactions/${index}`, options).then((res) => res.json());
+    // }
 
     const handleOnChange = (e) => {
         setTransaction({ ...transaction, date: e.target.value })
