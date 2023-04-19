@@ -29,15 +29,24 @@ export default function EditTransaction() {
             .catch((e) => console.error(e))
     }, [index]);
 
+    // const updateTransaction = () => {
+    //     axios
+    //         .put(`${API}/transactions/${index}`, transaction)
+    //         .then((res) => {
+    //             setTransaction(res.data)
+    //             console.log(res.data)
+    //             navigate(`/transactions/${index}`)
+    //         })
+    //         .catch((e) => console.error(e))
+    // }
+
     const updateTransaction = () => {
-        axios
-            .put(`${API}/transactions/${index}`, transaction)
-            .then((res) => {
-                setTransaction(res.data)
-                console.log(res.data)
-                navigate(`/transactions/${index}`)
-            })
-            .catch((e) => console.error(e))
+        const options = {
+            method: "PUT",
+            body: JSON.stringify(transaction),
+            headers: { "Content-Type": "application/json" }
+        }
+        return fetch(`${API}/transactions/${index}`, options).then((res) => res.json());
     }
 
     const handleOnChange = (e) => {
@@ -65,6 +74,14 @@ export default function EditTransaction() {
         <div className="edit">
             <h1>Edit Transaction form</h1>
             <form onSubmit={handleSubmit}>
+                <label>ITEM NAME</label>
+                <input
+                    id="item_name"
+                    value={transaction.item_name}
+                    type="text"
+                    onChange={handleTextChange}
+                    required
+                />
                 <label>DATE</label>
                 <input
                     id="date"
@@ -141,8 +158,9 @@ export default function EditTransaction() {
                     placeholder="comment"
                     required
                 />
+                <br />
                 <Link to="/transactions"><button>Back</button></Link>
-                <input type="submit" />
+                <input type="submit" className="submit" />
             </form>
         </div>
     )

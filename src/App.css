@@ -103,13 +103,34 @@ td {
   width: 80px;
 }
 
-.transaction{
+.transaction {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.edit{
+.edit {
   display: flex;
   flex-direction: column;
+}
+
+.edit button {
+  background-color: white;
+  height: 40px;
+  margin: 30px;
+  width: 80px;
+}
+
+.submit {
+  background-color: white;
+  height: 40px;
+  margin: 30px;
+  width: 80px;
+}
+
+.new button {
+  background-color: white;
+  height: 40px;
+  margin: 30px;
+  width: 80px;
 }

@@ -19,9 +19,9 @@ function App() {
     let amount = 0;
     for (let i = 0; i < transactions.length; i++) {
       if (!transactions[i].income) {
-        amount += -transactions[i].amount
+        amount += -(Number(transactions[i].amount))
       } else {
-        amount += transactions[i].amount
+        amount += Number(transactions[i].amount)
       }
     }
     return setTotal(amount)
