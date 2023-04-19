@@ -89,3 +89,7 @@
   height: 50px;
   margin-left: 25%;
 }
+
+.transactions a{
+  color: black;
+}
