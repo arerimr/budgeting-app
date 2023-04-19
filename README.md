@@ -1,6 +1,7 @@
 # Bugedting App
 #### Full stack web application
 
+#### [BACKEND REPO](https://github.com/arerimr/budgeting-app-backend)
 
 ## About
 Read, create, update, or delete budgeting transactions!
@@ -18,7 +19,6 @@ By using the search option the background will change to a gif of the given cate
 
 <br>
 
-#### [BACKEND REPO](https://github.com/arerimr/budgeting-app-backend) 
 
 ### Languages
 <p>⌨ JAVASCRIPT: Express.js, React.js</p>
