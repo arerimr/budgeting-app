@@ -43,8 +43,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/transactions' element={<Transactions transactions={transactions} total={total} addingTotal={addingTotal} />} />
-        <Route path='/transactions/:id' element={<Transaction />} />
-        <Route path='/transactions/:id/edit' element={<EditTransaction />} />
+        <Route path='/transactions/:index' element={<Transaction />} />
+        <Route path='/transactions/:index/edit' element={<EditTransaction />} />
         <Route path='/transactions/new' element={<NewTransaction />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
