@@ -47,7 +47,7 @@
 }
 
 .NavBar button {
-  margin-left: 50%;
+  margin-left: 25%;
   background-color: pink;
   height: 50px;
   font-weight: bold;
@@ -83,4 +83,9 @@
   padding: 8px;
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.navTotal{
+  height: 50px;
+  margin-left: 25%;
 }

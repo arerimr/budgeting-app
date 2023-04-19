@@ -24,7 +24,7 @@ function App() {
         amount += transactions[i].amount
       }
     }
-    return amount
+    return setTotal(amount)
   }
 
 
@@ -34,16 +34,15 @@ function App() {
       .then((res) => {
         setTransactions(res.data.sort((a, b) => new Date(b.date) - new Date(a.date)))
         // console.log(transactions)
-        setTotal(addingTotal(transactions))
       }).catch((e) => console.log(e))
   }, [])
 
   return (
     <div className="App">
-      <NavBar />
+      <NavBar transactions={transactions} total={total} addingTotal={addingTotal} />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/transactions' element={<Transactions transactions={transactions} total={total} />} />
+        <Route path='/transactions' element={<Transactions transactions={transactions} total={total} addingTotal={addingTotal} />} />
         <Route path='/transactions/:id' element={<Transaction />} />
         <Route path='/transactions/:id/edit' element={<EditTransaction />} />
         <Route path='/transactions/new' element={<NewTransaction />} />

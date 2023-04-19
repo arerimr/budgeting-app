@@ -1,7 +1,12 @@
+import { useEffect } from "react"
 const API = process.env.REACT_APP_API_URL
 console.log(API)
 
-export default function Transactions({ transactions, total }) {
+export default function Transactions({ transactions, total, addingTotal }) {
+
+    useEffect(() => {
+        addingTotal(transactions)
+    }, [])
 
     return (
         <div className="transactions">
