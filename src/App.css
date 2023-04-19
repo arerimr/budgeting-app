@@ -68,3 +68,19 @@
   background-image: url('../src/Assets/404.gif');
   height: 500px;
 }
+
+.transactions table, tr, td{
+  border: 1px solid black;
+}
+
+.transactions{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.transactions td{
+  padding: 8px;
+  padding-left: 15px;
+  padding-right: 15px;
+}

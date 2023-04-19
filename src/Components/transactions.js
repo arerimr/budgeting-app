@@ -1,24 +1,11 @@
-import { useEffect, useState } from "react"
-import axios from "axios"
 const API = process.env.REACT_APP_API_URL
-// const API = 'http://localhost:8889'
 console.log(API)
 
-export default function Transactions() {
-    const [transactions, setTransactions] = useState([])
-
-    useEffect(() => {
-        axios
-            .get(`${API}/transactions`)
-            .then((res) => {
-                setTransactions(res.data)
-                // console.log(transactions)
-            }).catch((e) => console.log(e))
-    }, [])
+export default function Transactions({ transactions, total }) {
 
     return (
-        <div>
-            <h1>Transactions</h1>
+        <div className="transactions">
+            <h1>Transactions - Total: ${total}</h1>
             <table>
                 <tbody>
                     <tr>
@@ -30,11 +17,11 @@ export default function Transactions() {
                     </tr>
 
                     {
-                        transactions.map((trans) => {
-                            return <tr>
+                        transactions.map((trans, index) => {
+                            return <tr key={index}>
                                 <td>{trans.date}</td>
                                 <td>{trans.item_name}</td>
-                                <td>${trans.amount}</td>
+                                <td style={trans.income ? { color: "green" } : { color: "red" }}>${trans.amount}</td>
                                 <td>{trans.priority === "high" ? trans.priority === "medium" ? "📌" : "📌📌📌" : "📌📌"}</td>
                                 <td>{trans.completed ? "✔" : "𝙓"}</td>
                             </tr>
