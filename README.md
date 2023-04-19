@@ -20,11 +20,6 @@ By using the search option the background will change to a gif of the given cate
 
 #### [BACKEND REPO](https://github.com/arerimr/budgeting-app-backend) 
 
-
-### API's
-🔌 [GIPHY](https://developers.giphy.com/) <br />
-🔌 [PUBLIC APIS](https://api.publicapis.org/)
-
 ### Languages
 <p>⌨ JAVASCRIPT: Express.js, React.js</p>
 <p>💻 HTML</p>
