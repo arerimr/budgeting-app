@@ -32,7 +32,7 @@ function App() {
     axios
       .get(`${API}/transactions`)
       .then((res) => {
-        setTransactions(res.data.sort((a, b) => new Date(b.date) - new Date(a.date)))
+        setTransactions(res.data)
         // console.log(transactions)
       }).catch((e) => console.log(e))
   }, [])

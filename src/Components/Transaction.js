@@ -20,8 +20,17 @@ export default function Transaction() {
         // console.log(index)
     }, [])
 
+    const handleDelete = () => {
+        axios
+            .delete(`${API}/transactions/${index}`)
+            .catch((e) => console.error(e))
+
+        navigate('/transactions')
+    };
+
+
     return (
-        <div>
+        <div className="transaction">
             <h1>Transaction Details</h1>
             <h2>{trans.item_name}</h2>
             <table>
@@ -54,16 +63,15 @@ export default function Transaction() {
                     <br />
                     <tr>
                         <th>COMMENT</th>
-
-
-
-
-
                         <td>{trans.comment}</td>
                     </tr>
                 </tbody>
             </table>
-
+            <div>
+                <Link to="/transactions"><button>Back</button></Link>
+                <Link to={`/transactions/${index}/edit`}><button>Edit</button></Link>
+                <button onClick={handleDelete}>Delete</button>
+            </div>
         </div>
     )
 }

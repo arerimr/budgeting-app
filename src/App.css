@@ -69,27 +69,42 @@
   height: 500px;
 }
 
-.transactions table, tr, td{
+.transactions table,
+tr,
+td {
   border: 1px solid black;
 }
 
-.transactions{
+.transactions {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.transactions td{
+.transactions td {
   padding: 8px;
   padding-left: 15px;
   padding-right: 15px;
 }
 
-.navTotal{
+.navTotal {
   height: 50px;
   margin-left: 25%;
 }
 
-.transactions a{
+.transactions a {
   color: black;
+}
+
+.transaction button {
+  background-color: white;
+  height: 40px;
+  margin: 30px;
+  width: 80px;
+}
+
+.transaction{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
