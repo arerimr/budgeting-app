@@ -4,7 +4,6 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 const API = process.env.REACT_APP_API_URL
 
 export default function EditTransaction() {
-    const [dateInput, setDateInput] = useState("")
     const dateInputRef = useRef(null)
     const [transaction, setTransaction] = useState({
         id: 0,
@@ -19,12 +18,34 @@ export default function EditTransaction() {
         category: ""
     })
 
+    const { index } = useParams()
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        axios
+            .get(`${API}/transactions/${index}`)
+            .then((res) => setTransaction(res.data))
+            .catch((e) => console.error(e))
+    }, [index]);
+
+    const updateTransaction = () => {
+        axios
+            .put(`${API}/transactions/${index}`, transaction)
+            .then((res) => {
+                setTransaction(res.data)
+                console.log(res.data)
+                navigate(`/transactions/${index}`)
+            })
+            .catch((e) => console.error(e))
+    }
+
     const handleOnChange = (e) => {
         setTransaction({ ...transaction, date: e.target.value })
     }
 
-    const handleTextChange = (event) => {
-        setTransaction({ ...transaction, [event.target.id]: event.target.value });
+    const handleTextChange = (e) => {
+        setTransaction({ ...transaction, [e.target.id]: e.target.value });
     };
 
     const handleIncomeCheckbox = (e) => {
@@ -35,19 +56,25 @@ export default function EditTransaction() {
         setTransaction({ ...transaction, completed: !transaction.completed });
     };
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        updateTransaction()
+    };
+
     return (
-        <div>
+        <div className="edit">
             <h1>Edit Transaction form</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label>DATE</label>
                 <input
                     id="date"
                     value={transaction.date}
-                    type="date"
+                    type="text"
                     onChange={handleOnChange}
                     ref={dateInputRef}
-                    required
                 />
+                <br />
+                <br />
                 <label>FROM</label>
                 <input
                     id="from"
@@ -57,6 +84,8 @@ export default function EditTransaction() {
                     placeholder="from"
                     required
                 />
+                <br />
+                <br />
                 <label>AMOUNT</label>
                 <input
                     id="amount"
@@ -66,6 +95,8 @@ export default function EditTransaction() {
                     placeholder="amount"
                     required
                 />
+                <br />
+                <br />
                 <label>CATEGORY</label>
                 <input
                     id="category"
@@ -75,19 +106,22 @@ export default function EditTransaction() {
                     placeholder="category"
                     required
                 />
+                <br />
+                <br />
                 <label>PRIORITY</label>
                 <select id="priority" onChange={handleTextChange} required>
                     <option name="low" id="low">LOW</option>
                     <option name="medium" id="medium">MEDIUM</option>
                     <option name="high" id="high">HIGH</option>
                 </select>
+                <br />
+                <br />
                 <label>INCOME</label>
                 <input
                     id="income"
                     type="checkbox"
                     onChange={handleIncomeCheckbox}
                     checked={transaction.income}
-                    required
                 />
                 <label>COMPLETED</label>
                 <input
@@ -95,8 +129,9 @@ export default function EditTransaction() {
                     type="checkbox"
                     onChange={handleCompletedCheckbox}
                     checked={transaction.completed}
-                    required
                 />
+                <br />
+                <br />
                 <label>COMMENT</label>
                 <textarea
                     id="comment"
@@ -106,6 +141,8 @@ export default function EditTransaction() {
                     placeholder="comment"
                     required
                 />
+                <Link to="/transactions"><button>Back</button></Link>
+                <input type="submit" />
             </form>
         </div>
     )
